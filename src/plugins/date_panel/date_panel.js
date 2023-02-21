@@ -121,13 +121,13 @@ export default function DatePanel({
                       ? focusedClassName || "rmdp-focused"
                       : ""
                   }`}
-                  onClick={() =>
-                    !removeButton && selectDate(object.date, object.index)
+                  onClick={(e) =>
+                    !removeButton && selectDate(object.date, object.index, e)
                   }
                 >
                   <span
-                    onClick={() =>
-                      removeButton && selectDate(object.date, object.index)
+                    onClick={(e) =>
+                      removeButton && selectDate(object.date, object.index, e)
                     }
                     style={{ cursor: object.date ? "pointer" : "default" }}
                   >
@@ -150,8 +150,8 @@ export default function DatePanel({
     </div>
   );
 
-  function selectDate(date, index) {
-    handleClick(date ? selectedDate[index] : undefined);
+  function selectDate(date, index, event) {
+    handleClick(date ? selectedDate[index] : undefined, event);
 
     if (!date) return;
 
@@ -181,11 +181,10 @@ export default function DatePanel({
       focused,
     });
 
-    handleClick();
     handleFocusedDate(focused);
   }
 
-  function handleClick(date) {
-    if (onClickDate instanceof Function) onClickDate(date);
+  function handleClick(date, event) {
+    if (onClickDate instanceof Function) onClickDate(date, event);
   }
 }
