@@ -29,7 +29,7 @@ export default [
     input: "src/index.js",
     output: [
       {
-        file: "build/index.js",
+        file: "dist/index.js",
         format: "cjs",
         plugins: [terser()],
         exports: "named",
@@ -41,7 +41,7 @@ export default [
     input: "src/index_browser.js",
     output: [
       {
-        file: "build/browser.min.js",
+        file: "dist/browser.min.js",
         format: "umd",
         plugins: [terser()],
         name: "ReactMultiDatePicker",
@@ -92,7 +92,7 @@ function build(dirName) {
           exports: "named",
         },
         {
-          file: `build/${path}.browser.js`,
+          file: `dist/${path}.browser.js`,
           format: "umd",
           plugins: [terser()],
           name,
