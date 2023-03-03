@@ -1,5 +1,5 @@
 /node_modules
-/build
+/.idea
 /coverage
 /website/node_modules
 /website/public
